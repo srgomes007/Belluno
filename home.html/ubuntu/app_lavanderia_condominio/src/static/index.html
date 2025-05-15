@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Lavanderia</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Agendamento de Lavanderia do Condomínio</h1>
+    </header>
+
+    <main>
+        <section id="user-info">
+            <h2>Seu Andar: <span id="user-floor">Carregando...</span></h2>
+            <p>Apartamento: <span id="user-apartment">Carregando...</span></p>
+            <!-- Adicionar campos de login/autenticação aqui posteriormente -->
+        </section>
+
+        <section id="date-selection">
+            <label for="schedule-date">Selecione a Data:</label>
+            <input type="date" id="schedule-date" name="schedule-date">
+        </section>
+
+        <section id="laundry-schedule">
+            <h2>Horários Disponíveis para <span id="selected-date-display">Data não selecionada</span></h2>
+            <div class="laundry-grid">
+                <div class="laundry-column">
+                    <h3>Lavanderia 1 (Seu Andar)</h3>
+                    <div class="time-slots" id="time-slots-laundry-1">
+                        <!-- Horários serão gerados por JavaScript -->
+                    </div>
+                </div>
+                <div class="laundry-column">
+                    <h3>Lavanderia 2 (Seu Andar)</h3>
+                    <div class="time-slots" id="time-slots-laundry-2">
+                        <!-- Horários serão gerados por JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="my-bookings">
+            <h2>Meus Agendamentos</h2>
+            <ul id="my-bookings-list">
+                <!-- Agendamentos do usuário serão listados aqui -->
+                <li class="no-bookings">Nenhum agendamento encontrado.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 App de Lavanderia do Condomínio</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

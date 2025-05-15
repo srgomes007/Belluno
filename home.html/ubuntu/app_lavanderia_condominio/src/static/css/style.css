@@ -1,0 +1,235 @@
+/* Reset básico e estilos globais */
+body, h1, h2, h3, p, ul, li, label, input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa; /* Off-white para o fundo geral */
+    color: #212529; /* Preto/Grafite para texto principal */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #FF8C00; /* Laranja Principal */
+    color: #FFFFFF; /* Branco para texto no header */
+    padding: 1.5rem 1rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+main {
+    flex: 1;
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+section {
+    background-color: #FFFFFF; /* Branco para fundo das seções */
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #dee2e6; /* Borda cinza clara */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    color: #E67E22; /* Laranja mais escuro para títulos de seção */
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+h3 {
+    color: #FF8C00; /* Laranja Principal para subtítulos */
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #f1f1f1; /* Borda laranja bem clara ou cinza */
+    padding-bottom: 0.5rem;
+}
+
+/* Informações do Usuário e Seleção de Data */
+#user-info p {
+    margin-bottom: 0.5rem;
+    color: #495057; /* Cinza escuro para texto secundário */
+}
+
+#date-selection label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #212529;
+}
+
+#schedule-date {
+    padding: 0.5rem;
+    border: 1px solid #ced4da; /* Cinza para borda do input */
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 250px;
+    background-color: #e9ecef; /* Fundo cinza claro para input */
+    color: #212529;
+}
+
+/* Grade de Agendamento de Lavanderias */
+#laundry-schedule h2 span {
+    font-weight: normal;
+    color: #495057;
+}
+
+.laundry-grid {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.laundry-column {
+    flex: 1;
+    min-width: 280px;
+    background-color: #f8f9fa; /* Fundo off-white para colunas de lavanderia */
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+}
+
+.time-slot {
+    background-color: #e9ecef; /* Cinza claro base para slots */
+    color: #212529;
+    padding: 0.8rem;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+    border: 1px solid #ced4da;
+    font-size: 0.9rem;
+}
+
+.time-slot:hover {
+    background-color: #E67E22; /* Laranja mais escuro no hover */
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+.time-slot.available {
+    background-color: #FFB74D; /* Laranja claro para disponível */
+    color: #212529; /* Texto escuro para contraste */
+}
+
+.time-slot.available:hover {
+    background-color: #FF8C00; /* Laranja principal no hover de disponível */
+    color: #FFFFFF;
+}
+
+.time-slot.booked {
+    background-color: #424242; /* Cinza escuro para ocupado */
+    color: #FFFFFF;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.time-slot.booked:hover {
+    background-color: #303030; /* Cinza mais escuro no hover de ocupado */
+    transform: none;
+}
+
+.time-slot.selected {
+    background-color: #FF8C00; /* Laranja principal para selecionado */
+    color: #FFFFFF;
+    border-color: #E67E22;
+}
+
+/* Meus Agendamentos */
+#my-bookings-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#my-bookings-list li {
+    background-color: #f8f9fa;
+    padding: 0.75rem 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #212529;
+}
+
+#my-bookings-list li.no-bookings {
+    color: #6c757d;
+    font-style: italic;
+    justify-content: center;
+}
+
+.cancel-booking-btn {
+    background-color: #FF8C00; /* Laranja principal para botão cancelar */
+    color: #FFFFFF;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
+}
+
+.cancel-booking-btn:hover {
+    background-color: #E67E22; /* Laranja mais escuro no hover */
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #212529; /* Preto/Grafite para rodapé */
+    color: #f8f9fa; /* Texto off-white no rodapé */
+    margin-top: auto;
+}
+
+/* Media Queries para Responsividade (manter como está ou ajustar se necessário) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    main {
+        padding: 1rem;
+    }
+    section {
+        padding: 1rem;
+    }
+    .laundry-grid {
+        flex-direction: column;
+    }
+    .time-slots {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .time-slot {
+        font-size: 0.8rem;
+        padding: 0.6rem;
+    }
+    #schedule-date {
+        font-size: 0.9rem;
+    }
+}
+

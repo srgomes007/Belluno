@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Administrativo - Agendamento de Lavanderia</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Reutilizar o style.css principal -->
+    <style>
+        /* Estilos específicos para o dashboard administrativo */
+        body {
+            background-color: #f4f4f4; /* Um cinza um pouco mais escuro para diferenciar do app normal */
+        }
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+        }
+        .dashboard-section {
+            background-color: #FFFFFF;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .dashboard-section h2 {
+            color: #E67E22; /* Laranja escuro */
+            border-bottom: 2px solid #FF8C00; /* Laranja principal */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 0.75rem;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        th {
+            background-color: #343A40; /* Preto/Cinza escuro para cabeçalho da tabela */
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .filter-controls {
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .filter-controls label,
+        .filter-controls input,
+        .filter-controls select,
+        .filter-controls button {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+            font-size: 0.9rem;
+        }
+        .filter-controls button {
+            background-color: #FF8C00; /* Laranja principal */
+            color: #FFFFFF;
+            cursor: pointer;
+            border-color: #FF8C00;
+        }
+        .filter-controls button:hover {
+            background-color: #E67E22;
+        }
+        .status-select {
+            padding: 0.4rem;
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+            background-color: #e9ecef;
+        }
+        .maintenance-btn {
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .maintenance-btn.activate {
+            background-color: #28a745; /* Verde para ativar */
+        }
+        .maintenance-btn.deactivate {
+            background-color: #dc3545; /* Vermelho para desativar (colocar em manutenção) */
+        }
+        .maintenance-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Estilo para a navegação do admin, se houver */
+        .admin-nav {
+            background-color: #343A40;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+        .admin-nav a {
+            color: #FF8C00;
+            text-decoration: none;
+            margin-right: 1rem;
+            font-weight: 500;
+        }
+        .admin-nav a:hover {
+            color: #FFFFFF;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dashboard Administrativo - Lavanderias</h1>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Poderia ter uma navegação simples aqui se o dashboard crescer -->
+        <!-- <nav class="admin-nav">
+            <a href="#agendamentos">Ver Agendamentos</a>
+            <a href="#lavanderias">Gerenciar Lavanderias</a>
+        </nav> -->
+
+        <section id="agendamentos" class="dashboard-section">
+            <h2>Agendamentos Recentes e Futuros</h2>
+            <div class="filter-controls">
+                <label for="filter-date-start">Data Início:</label>
+                <input type="date" id="filter-date-start" name="filter-date-start">
+                <label for="filter-date-end">Data Fim:</label>
+                <input type="date" id="filter-date-end" name="filter-date-end">
+                <label for="filter-floor">Andar:</label>
+                <select id="filter-floor" name="filter-floor">
+                    <option value="">Todos</option>
+                    <!-- Andares serão populados por JS ou backend -->
+                </select>
+                <button id="apply-filters-btn">Filtrar Agendamentos</button>
+            </div>
+            <table id="bookings-table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Horário</th>
+                        <th>Andar</th>
+                        <th>Lavanderia</th>
+                        <th>Morador</th>
+                        <th>Apto</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="bookings-table-body">
+                    <!-- Linhas da tabela serão preenchidas por JavaScript -->
+                    <tr><td colspan="7" style="text-align:center;">Carregando agendamentos...</td></tr>
+                </tbody>
+            </table>
+            <!-- Controles de Paginação aqui se necessário -->
+        </section>
+
+        <section id="lavanderias" class="dashboard-section">
+            <h2>Gerenciamento de Lavanderias</h2>
+            <table id="laundries-table">
+                <thead>
+                    <tr>
+                        <th>Andar</th>
+                        <th>Identificador</th>
+                        <th>Status Atual</th>
+                        <th>Ação (Manutenção)</th>
+                    </tr>
+                </thead>
+                <tbody id="laundries-table-body">
+                    <!-- Linhas da tabela serão preenchidas por JavaScript -->
+                    <tr><td colspan="4" style="text-align:center;">Carregando lavanderias...</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 App de Lavanderia do Condomínio - Painel Administrativo</p>
+    </footer>
+
+    <script src="js/admin_dashboard.js"></script> <!-- Novo JS para o dashboard -->
+</body>
+</html>
